@@ -68,11 +68,11 @@ public final class MainActivity extends Activity {
     public void requestLocationUpdates(
             final View view
     ) {
-        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) ==
+        if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED) {
             reallyRequestLocationUpdates();
         } else {
-            requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, RC);
+            requestPermissions(new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, RC);
         }
     }
 
@@ -112,8 +112,7 @@ public final class MainActivity extends Activity {
                         currentCallback = null;
                         forceGC();
                     } else {
-                        Log.d(TAG, "Location updates removal request failed",
-                                task.getException());
+                        Log.d(TAG, "Location updates removal request failed", task.getException());
                     }
                 });
     }
